@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>com.rpgnextgen</groupId>
+    <artifactId>testing.stream</artifactId>
+    <version>1.0.0</version>
+    <name>Testing Streams with DB2 on IBM i</name>
+    
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdbi.version>3.23.0</jdbi.version>
+        <jtopen.version>10.7</jtopen.version>
+        <jupiter.version>5.8.1</jupiter.version>
+        <h2.version>1.4.200</h2.version>
+        <flyway.version>8.2.1</flyway.version>
+        <johnzon.version>1.2.14</johnzon.version>
+    </properties>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-bom</artifactId>
+                <version>${jdbi.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.jt400</groupId>
+            <artifactId>jt400</artifactId>
+            <version>${jtopen.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-sqlobject</artifactId>
+        </dependency>
+    </dependencies>
+</project>
