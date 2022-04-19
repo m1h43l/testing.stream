@@ -2,6 +2,7 @@ package testing.stream;
 
 import java.util.stream.Stream;
 
+import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 
 public class Application {
@@ -12,8 +13,9 @@ public class Application {
 
 	private void run() {
 		Jdbi jdbi = new IbmiDatabaseProvider().createJdbi();
-		CustomerDao dao = jdbi.onDemand(CustomerDao.class);
-		try (Stream<Customer> stream = dao.list()) {
+		try (Handle handle = jdbi.open()) {
+			CustomerDao dao = handle.attach(CustomerDao.class);
+			Stream<Customer> stream = dao.list();
 			stream.forEach(customer -> System.out.println(customer));
 		}
 		;
